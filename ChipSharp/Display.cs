@@ -74,7 +74,7 @@ namespace ChipSharp
             var fileResult = romChooserDialog.ShowDialog();
             if (fileResult == DialogResult.OK)
             {
-                var romBytes = File.ReadAllBytes(romChooserDialog.SafeFileName);
+                var romBytes = File.ReadAllBytes(romChooserDialog.FileName);
                 _ioState.Rom = romBytes;
                 _ioState.Reset = true;
             }

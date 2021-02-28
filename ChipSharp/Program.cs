@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,11 +17,22 @@ namespace ChipSharp
             var ioState = new IOState();
             var form = new Display(ioState);
             var cpu = new CPU(ioState);
-
             form.Show();
             long cpuTicks = 0;
             var secondStart = DateTime.Now;
             var doNothing = 0;
+            cpu.LoadRom();
+
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if (cpu.Delay > 0)
+                        cpu.Delay--;
+                    Thread.Sleep(1000 / 60);
+
+                }
+            });
             while (form.Visible)
             {
                 Application.DoEvents();
@@ -58,7 +64,7 @@ namespace ChipSharp
                 {
                     doNothing++;
                 }
-               
+
             }
 
         }

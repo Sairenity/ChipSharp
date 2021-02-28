@@ -72,7 +72,10 @@ namespace ChipSharp
         public void Clock()
         {
             if (!_romLoaded) return;
-            if (Delay > 0) Delay--;
+            if (Delay > 0)
+            {
+                return;
+            }
             if (SoundTimer > 0)
             {
                 var test = SoundTimer;
