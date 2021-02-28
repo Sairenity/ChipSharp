@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Schema;
 
 namespace ChipSharp
 {
@@ -14,10 +11,7 @@ namespace ChipSharp
     {
         private readonly IOState _ioState;
         public static readonly ushort ProgramOffset = 0x200;
-
-
         public byte[] Memory = new byte[4096];
-        public bool[] Display = new bool[64 * 32];
         public ushort ProgramCounter = ProgramOffset;
         public ushort IndexRegister = 0;
         public Stack<ushort> Stack = new Stack<ushort>(); //shortstack hehe
@@ -41,7 +35,7 @@ namespace ChipSharp
         public void Reset()
         {
             Memory = new byte[4096];
-            Display = new bool[64 * 32];
+            _ioState.Display = new bool[64 * 32];
             ProgramCounter = ProgramOffset;
             IndexRegister = 0;
             Stack.Clear();
@@ -100,8 +94,8 @@ namespace ChipSharp
             {
                 case 0x00: // 0x00E0 clear screen
                     if (instr == 0x00E0)
-                        for (int i = 0; i < Display.Length; i++)
-                            Display[i] = false;
+                        for (int i = 0; i < _ioState.Display.Length; i++)
+                            _ioState.Display[i] = false;
                     if (instr == 0x00EE)
                         ProgramCounter = Stack.Pop();
                     break;
@@ -204,19 +198,16 @@ namespace ChipSharp
                         for (int bitIndex = 7; bitIndex >= 0; bitIndex--) // iterate through bits of spriteData, msb first
                         {
                             var isBitSet = ((spriteData >> bitIndex) & 0x01) == 1;
-                            if (Display[xVal + 64 * yVal])
+                            if (_ioState.Display[xVal + 64 * yVal])
                                 Registers[0x0F] = 1;
-                            Display[xVal + 64 * yVal] ^= isBitSet;
+                            _ioState.Display[xVal + 64 * yVal] ^= isBitSet;
                             xVal++;
                             xVal %= 64;
 
                         }
-
                         yVal++;
                         yVal %= 32;
-
                     }
-
                     _ioState.ForceRedraw = true;
                     break;
 
@@ -280,40 +271,6 @@ namespace ChipSharp
 
                     }
                     break;
-            }
-        }
-
-        public Bitmap DisplayToBitmap()
-        {
-            using (var g = Graphics.FromImage(_displayBuffer))
-            {
-                g.FillRectangle(Brushes.Black, 0, 0, 640, 320);
-                for (int lineY = 0; lineY < 32; lineY++)
-                {
-                    for (int lineX = 0; lineX < 64; lineX++)
-                    {
-                        var index = lineX + 64 * lineY;
-                        if (Display[index])
-                            g.FillRectangle(Brushes.White, lineX * 10, lineY * 10, 10, 10);
-
-                    }
-                }
-            }
-
-
-            return _displayBuffer;
-        }
-
-        public void PrintDisplay()
-        {
-            for (int y = 0; y < 32; y++)
-            {
-                for (int x = 0; x < 64; x++)
-                {
-                    var index = x + 64 * y;
-                    Console.Write(Display[index] ? "*" : " ");
-                }
-                Console.WriteLine();
             }
         }
 

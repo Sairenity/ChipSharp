@@ -49,7 +49,6 @@ namespace ChipSharp
             this.DisplayImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DisplayImage.TabIndex = 0;
             this.DisplayImage.TabStop = false;
-            this.DisplayImage.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // menuStrip1
             // 
@@ -73,7 +72,7 @@ namespace ChipSharp
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -91,7 +90,6 @@ namespace ChipSharp
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.debugToolStripMenuItem.Text = "Show Debugger";
-            this.debugToolStripMenuItem.Click += new System.EventHandler(this.debugToolStripMenuItem_Click);
             // 
             // keybindingsToolStripMenuItem
             // 
@@ -112,8 +110,7 @@ namespace ChipSharp
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Display";
-            this.Text = "🍪 ChipSharp";
-            this.Load += new System.EventHandler(this.Display_Load);
+            this.Text = "ChipSharp";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Display_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Display_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImage)).EndInit();

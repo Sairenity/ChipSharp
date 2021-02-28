@@ -17,10 +17,10 @@ namespace ChipSharp
             var ioState = new IOState();
             var form = new Display(ioState);
             var cpu = new CPU(ioState);
-            form.Show();
-            long cpuTicks = 0;
+            var cpuTicks = 0;
             var secondStart = DateTime.Now;
-            var doNothing = 0;
+
+            form.Show();
             cpu.LoadRom();
 
             Task.Run(() =>
@@ -49,22 +49,17 @@ namespace ChipSharp
                 if (ioState.ForceRedraw)
                 {
                     ioState.ForceRedraw = false;
-                    form.SetImage(cpu.DisplayToBitmap());
+                    form.RenderDisplay();
                 }
 
                 var delta = (DateTime.Now - secondStart).TotalMilliseconds;
                 if (delta > 1000)
                 {
-                    form.IPS = (int)cpuTicks;
+                    form.IPS = cpuTicks;
                     secondStart = DateTime.Now;
                     cpuTicks = 0;
                 }
-
-                while ((DateTime.Now - clockCycleStart).TotalMilliseconds < 1.0)
-                {
-                    doNothing++;
-                }
-
+                while ((DateTime.Now - clockCycleStart).TotalMilliseconds < 1.0) { }
             }
 
         }
