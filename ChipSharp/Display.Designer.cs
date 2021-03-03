@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace ChipSharp
 {
     partial class Display
@@ -34,7 +36,6 @@ namespace ChipSharp
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keybindingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImage)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -79,17 +80,10 @@ namespace ChipSharp
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.debugToolStripMenuItem,
             this.keybindingsToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // debugToolStripMenuItem
-            // 
-            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.debugToolStripMenuItem.Text = "Show Debugger";
             // 
             // keybindingsToolStripMenuItem
             // 
@@ -107,10 +101,12 @@ namespace ChipSharp
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = global::ChipSharp.Properties.Resources.cookie_chocolate_512;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Display";
             this.Text = "ChipSharp";
+            this.Load += new System.EventHandler(this.Display_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Display_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Display_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.DisplayImage)).EndInit();
@@ -128,7 +124,6 @@ namespace ChipSharp
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keybindingsToolStripMenuItem;
     }
 }

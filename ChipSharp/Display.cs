@@ -88,5 +88,9 @@ namespace ChipSharp
             DisplayImage.Image = _displayBuffer;
         }
 
+        private void Display_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

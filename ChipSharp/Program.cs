@@ -30,9 +30,9 @@ namespace ChipSharp
                     if (cpu.Delay > 0)
                         cpu.Delay--;
                     Thread.Sleep(1000 / 60);
-
                 }
             });
+
             while (form.Visible)
             {
                 Application.DoEvents();
