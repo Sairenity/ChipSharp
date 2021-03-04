@@ -11,7 +11,7 @@ ChipSharp is a [Chip-8](https://en.wikipedia.org/wiki/CHIP-8) Interpreter built 
 * ChipSharp primarily supports Windows at the moment, though you might be able to run it with Mono on other platforms. This has not been tested yet.
 
 ## Downloads
-[Latest Release](https://github.com/Sairenity/ChipSharp/releases)
+[Latest Release](https://github.com/Sairenity/ChipSharp/releases/latest)
 
 ## Building
 ChipSharp is a self-contained, standard C# Windows Forms project. It can be built using either JetBrains Rider or Visual Studio 2019.
