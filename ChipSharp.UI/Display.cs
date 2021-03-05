@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChipSharp.UI.Properties;
 
 namespace ChipSharp
 {
@@ -30,10 +31,12 @@ namespace ChipSharp
 
         public Display(IOState ioState)
         {
+            Icon = Resources.cookie_chocolate_512;
             _ioState = ioState;
             InitializeComponent();
             _originalText = Text;
             KeybindingState = new KeybindingState();
+            
         }
 
         private void Display_KeyDown(object sender, KeyEventArgs e)

@@ -7,7 +7,7 @@
 ChipSharp is a [Chip-8](https://en.wikipedia.org/wiki/CHIP-8) Interpreter built in C# using Windows Forms. It is not yet feature complete.
 
 ## Prerequisites
-* The .NET Runtime Version >= 4.7.2 needs to be installed on your system.
+* The .NET 5 Runtime needs to be installed on your system.
 * ChipSharp primarily supports Windows at the moment, though you might be able to run it with Mono on other platforms. This has not been tested yet.
 
 ## Downloads

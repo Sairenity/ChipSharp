@@ -34,7 +34,7 @@ namespace ChipSharp
                 {
                     if (_isRebinding) return;
 
-                    var btn = (Button)o;
+                    var btn = (Button)o!;
                     var (id, key) = (Tuple<int, Keys>)btn.Tag;
                     _isRebinding = true;
                     _rebindIndex = id;

@@ -1,5 +1,6 @@
 ﻿
 using System.Windows.Forms;
+using ChipSharp.UI.Properties;
 
 namespace ChipSharp
 {
@@ -45,6 +46,7 @@ namespace ChipSharp
             // 
             this.DisplayImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayImage.Location = new System.Drawing.Point(0, 24);
+            this.DisplayImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DisplayImage.Name = "DisplayImage";
             this.DisplayImage.Size = new System.Drawing.Size(640, 320);
             this.DisplayImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -58,6 +60,7 @@ namespace ChipSharp
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(640, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -94,16 +97,17 @@ namespace ChipSharp
             // 
             // Display
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 344);
             this.Controls.Add(this.DisplayImage);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = global::ChipSharp.Properties.Resources.cookie_chocolate_512;
+            this.Icon = Resources.cookie_chocolate_512;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Display";
             this.Text = "ChipSharp";
             this.Load += new System.EventHandler(this.Display_Load);

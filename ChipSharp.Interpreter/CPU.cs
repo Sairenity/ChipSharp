@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,7 +20,6 @@ namespace ChipSharp
 
         private readonly Random _random = new Random();
 
-        private readonly Bitmap _displayBuffer = new Bitmap(640, 320, PixelFormat.Format32bppArgb);
         private bool _romLoaded;
 
 
@@ -75,7 +72,10 @@ namespace ChipSharp
                 var test = SoundTimer;
                 Task.Run(() =>
                 {
-                    Console.Beep(500, test * 20);
+                    if (OperatingSystem.IsWindows())
+                    {
+                        Console.Beep(500, test * 20);
+                    }
                 });
 
                 SoundTimer = 0;
